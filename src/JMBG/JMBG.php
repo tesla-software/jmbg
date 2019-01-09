@@ -39,17 +39,17 @@ class JMBG
             return false;
         }
 
-        // Calculate control number
-        $checksum = 11 - (7 * ($pos['A'] + $pos['G']) + 6 * ($pos['B'] + $pos['H']) + 5 * ($pos['C'] + $pos['I']) + 4 * ($pos['D'] + $pos['J']) + 3 * ($pos['E'] + $pos['K']) + 2 * ($pos['F'] + $pos['L'])) % 11;
-
         // Handle special region case for foreigners
         // 66 - Temporary residence
         // 06 - Permanent residence
-        // Foreigners with temporary residence cannot be validated via mod 11
+        // Foreigners with temporary residence cannot be validated via checksum
         // ref: http://www.ubs-asb.com/Portals/0/Casopis/2008/3_4/B03-04-2008-PO.pdf
         if ($pos['H'] == 6 && $pos['I'] == 6) {
             return true;
         }
+
+        // Calculate control number
+        $checksum = 11 - (7 * ($pos['A'] + $pos['G']) + 6 * ($pos['B'] + $pos['H']) + 5 * ($pos['C'] + $pos['I']) + 4 * ($pos['D'] + $pos['J']) + 3 * ($pos['E'] + $pos['K']) + 2 * ($pos['F'] + $pos['L'])) % 11;
 
         if ($checksum > 9) {
             $checksum = 0;
@@ -132,5 +132,16 @@ class JMBG
         }
 
         return $splitted;
+    }
+
+    /**
+     * Static call
+     *
+     * @param string|null $jmbg
+     * @return JMBG
+     */
+    public static function for(?string $jmbg = null): JMBG
+    {
+        return new static($jmbg);
     }
 }

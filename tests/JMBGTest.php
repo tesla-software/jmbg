@@ -15,6 +15,11 @@ class JMBGTest extends TestCase
         $this->assertTrue((new JMBG('0101006500006'))->isValid());
     }
 
+    public function testStaticCall()
+    {
+        $this->assertTrue(JMBG::for('2509992391801')->isValid());
+    }
+
     public function testGetGender()
     {
         $this->assertEquals('m', (new JMBG('0101006500006'))->getGender());

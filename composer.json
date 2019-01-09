@@ -1,0 +1,39 @@
+{
+    "name": "tesla-software/jmbg",
+    "description": "Validate, generate and extract data from JMBG (Unique Master Citizen Number)",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ivan Keleković",
+            "email": "kele@teslasoftware.eu",
+            "role": "Developer"
+        },
+        {
+            "name": "Karlo Mikuš",
+            "email": "karlo@teslasoftware.eu",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "jmbg",
+        "unique master citizen number",
+        "croatia",
+        "bosnia",
+        "serbia",
+        "montenegro",
+        "macedonia",
+        "slovenia"
+    ],
+    "require": {
+        "php" : "~7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tesla\\JMBG\\": "src/JMBG"
+        }
+    }
+}

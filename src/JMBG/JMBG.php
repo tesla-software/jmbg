@@ -49,7 +49,13 @@ class JMBG
         }
 
         // Calculate control number
-        $checksum = 11 - (7 * ($pos['A'] + $pos['G']) + 6 * ($pos['B'] + $pos['H']) + 5 * ($pos['C'] + $pos['I']) + 4 * ($pos['D'] + $pos['J']) + 3 * ($pos['E'] + $pos['K']) + 2 * ($pos['F'] + $pos['L'])) % 11;
+        $checksum = 11 - (
+            7 * ($pos['A'] + $pos['G']) +
+            6 * ($pos['B'] + $pos['H']) +
+            5 * ($pos['C'] + $pos['I']) +
+            4 * ($pos['D'] + $pos['J']) +
+            3 * ($pos['E'] + $pos['K']) +
+            2 * ($pos['F'] + $pos['L'])) % 11;
 
         if ($checksum > 9) {
             $checksum = 0;

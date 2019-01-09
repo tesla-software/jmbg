@@ -7,8 +7,7 @@ use Exception;
 class Generator
 {
     /**
-     * Generate valid fake JMBG, optionally
-     * override default values
+     * Generate valid fake JMBG, optionally override default values
      *
      * @param string|null $day
      * @param string|null $month
@@ -18,13 +17,12 @@ class Generator
      * @return string
      */
     public function fake(
-        ?string $day = null,
-        ?string $month = null,
+        ?int $day = 0,
+        ?int $month = null,
         ?string $year = null,
         ?string $region = null,
-        string $gender = 'f'
+        ?string $gender = null
     ): string {
-        $gender = strtolower($gender);
         $genders = [
             'f' => [
                 'from' => 500,
@@ -36,15 +34,16 @@ class Generator
             ],
         ];
 
-        if (!array_key_exists($gender, $genders)) {
-            throw new Exception('Invalid gender definition');
+        if (!$gender) {
+            $genderKeys = array_keys($genders);
+            $gender = $genderKeys[array_rand($genderKeys)];
         }
 
-        $day = $this->padDigits($day ?? '00', 2, 2);
-        $month = $this->padDigits($month ?? rand(1, 12), 2, 2);
-        $year = $this->padDigits($year ?? rand(1950, (int)date('Y') - 18), 4, 3);
-        $region = $this->padDigits($region ?? rand(0, 96), 2, 2);
-        $uniqueId = rand($genders[$gender]['from'], $genders[$gender]['to']);
+        $day = str_pad($day, 2, '0', STR_PAD_LEFT);
+        $month = str_pad($month ?? rand(1, 12), 2, '0', STR_PAD_LEFT);
+        $year = str_pad($year ?? substr(rand(1900, date('Y')), 1), 3, '0', STR_PAD_LEFT);
+        $region = str_pad($region ?? rand(0, 96), 2, '0', STR_PAD_LEFT);
+        $uniqueId = str_pad(rand($genders[$gender]['from'], $genders[$gender]['to']), 3, '0', STR_PAD_LEFT);
 
         $jmbg = $day . $month . $year . $region . $uniqueId;
 
@@ -75,21 +74,5 @@ class Generator
         $k = $k > 9 ? 0 : $k;
 
         return $k;
-    }
-
-    /**
-     * Format digits
-     *
-     * @param string $value
-     * @param int|null $minDigits
-     * @param int|null $maxDigits
-     * @return string
-     */
-    private function padDigits(string $value, ?int $minDigits = 2, ?int $maxDigits = 2): string
-    {
-        $value = sprintf('%0' . $minDigits . 'd', $value);
-
-        return substr($value, $maxDigits * -1);
-
     }
 }

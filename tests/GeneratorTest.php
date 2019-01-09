@@ -15,7 +15,8 @@ class GeneratorTest extends TestCase
             $this->assertTrue(JMBG::for($gen->fake())->isValid());
         }
 
-        $this->assertEquals('1992-09-25', JMBG::for($gen->fake(25, 9, 1992))->getBirthday()->format('Y-m-d'));
+        $this->assertEquals('1992-09-25', JMBG::for($gen->fake(25, 9, 992))->getBirthday()->format('Y-m-d'));
         $this->assertEquals('m', JMBG::for($gen->fake(null, null, null, null, 'm'))->getGender());
+        $this->assertEquals('f', JMBG::for($gen->fake(null, null, null, null, 'f'))->getGender());
     }
 }

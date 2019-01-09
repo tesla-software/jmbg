@@ -8,11 +8,40 @@ Validate, generate and extract data from JMBG (Unique Master Citizen Number).
 
 ## Install
 
-TODO
+Via Composer
+
+``` bash
+$ composer require tesla-software/jmbg
+```
 
 ## Usage
 
-TODO
+### Validation
+``` php
+use Tesla\JMBG\JMBG;
+
+// Check if JMBG is valid
+JMBG::for('2509992391801')->isValid(); // Returns: true
+
+// Extract birthday
+JMBG::for('2509992391801')->getBirthday(); // Returns: DateTime (1992-09-25)
+
+// Extract gedner (m for males, f for females)
+JMBG::for('2509992391801')->getGender(); // Returns: m
+```
+
+### Generation
+``` php
+use Tesla\JMBG\Generator;
+
+$gen = new Generator;
+
+// Returns valid random JMBG
+$gen->fake();
+
+// Override params [day, month, year, region, gender]
+$gen->fake(25, 9, 992, '57', '321');
+```
 
 ## Testing
 

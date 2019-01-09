@@ -35,5 +35,8 @@
         "psr-4": {
             "Tesla\\JMBG\\": "src/JMBG"
         }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }

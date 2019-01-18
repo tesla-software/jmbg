@@ -7,12 +7,13 @@ class JMBGTest extends TestCase
 {
     public function testIsValid()
     {
-        $this->assertFalse((new JMBG('0123456789123'))->isValid());
-        $this->assertFalse((new JMBG('0000000000000'))->isValid());
-        $this->assertFalse((new JMBG('1200000000003'))->isValid());
+        $this->assertFalse((new JMBG('0005983225175'))->isValid());
+        $this->assertFalse((new JMBG('0000000000001'))->isValid());
+        $this->assertFalse((new JMBG('1200000000004'))->isValid());
 
         $this->assertTrue((new JMBG('2509992391801'))->isValid());
         $this->assertTrue((new JMBG('0101006500006'))->isValid());
+        $this->assertTrue((new JMBG('0000000000000'))->isValid());
     }
 
     public function testStaticCall()

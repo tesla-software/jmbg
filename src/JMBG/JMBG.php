@@ -35,12 +35,6 @@ class JMBG
 
         $pos = $this->split($this->jmbg);
 
-        // Check for valid month
-        $month = (int)($pos['C'] . $pos['D']);
-        if ($month > 12 || $month < 1) {
-            return false;
-        }
-
         // Handle special region case for foreigners
         // 66 - Temporary residence
         // 06 - Permanent residence

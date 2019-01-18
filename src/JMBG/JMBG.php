@@ -6,7 +6,9 @@ use DateTime;
 
 class JMBG
 {
-    /** @var string|null */
+    /**
+     * @var string|null
+     */
     private $jmbg;
 
     /**
@@ -50,12 +52,12 @@ class JMBG
 
         // Calculate control number
         $checksum = 11 - (
-            7 * ($pos['A'] + $pos['G']) +
-            6 * ($pos['B'] + $pos['H']) +
-            5 * ($pos['C'] + $pos['I']) +
-            4 * ($pos['D'] + $pos['J']) +
-            3 * ($pos['E'] + $pos['K']) +
-            2 * ($pos['F'] + $pos['L'])) % 11;
+                7 * ($pos['A'] + $pos['G']) +
+                6 * ($pos['B'] + $pos['H']) +
+                5 * ($pos['C'] + $pos['I']) +
+                4 * ($pos['D'] + $pos['J']) +
+                3 * ($pos['E'] + $pos['K']) +
+                2 * ($pos['F'] + $pos['L'])) % 11;
 
         if ($checksum > 9) {
             $checksum = 0;
@@ -81,6 +83,7 @@ class JMBG
      * Get date of birth
      *
      * @return DateTime
+     * @throws \Exception
      */
     public function getBirthday(): DateTime
     {
@@ -118,7 +121,7 @@ class JMBG
     {
         $pos = str_split($jmbg);
 
-        $splitted = [
+        $split = [
             'A' => $pos[0],
             'B' => $pos[1],
             'C' => $pos[2],
@@ -134,10 +137,10 @@ class JMBG
         ];
 
         if (isset($pos[12])) {
-            $splitted['M'] = $pos[12];
+            $split['M'] = $pos[12];
         }
 
-        return $splitted;
+        return $split;
     }
 
     /**

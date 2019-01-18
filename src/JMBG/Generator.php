@@ -2,15 +2,13 @@
 
 namespace Tesla\JMBG;
 
-use Exception;
-
 class Generator
 {
     /**
      * Generate valid fake JMBG, optionally override default values
      *
-     * @param string|null $day
-     * @param string|null $month
+     * @param int|null $day
+     * @param int|null $month
      * @param string|null $year
      * @param string|null $region
      * @param string $gender
@@ -22,7 +20,8 @@ class Generator
         ?string $year = null,
         ?string $region = null,
         ?string $gender = null
-    ): string {
+    ): string
+    {
         $genders = [
             'f' => [
                 'from' => 500,
@@ -34,16 +33,17 @@ class Generator
             ],
         ];
 
-        if (!$gender) {
+        if (is_null($gender)) {
             $genderKeys = array_keys($genders);
             $gender = $genderKeys[array_rand($genderKeys)];
+            $gender = rand($genders[$gender]['from'], $genders[$gender]['to']);
         }
 
         $day = str_pad($day, 2, '0', STR_PAD_LEFT);
         $month = str_pad($month ?? rand(1, 12), 2, '0', STR_PAD_LEFT);
         $year = str_pad($year ?? substr(rand(1900, date('Y')), 1), 3, '0', STR_PAD_LEFT);
         $region = str_pad($region ?? rand(0, 96), 2, '0', STR_PAD_LEFT);
-        $uniqueId = str_pad(rand($genders[$gender]['from'], $genders[$gender]['to']), 3, '0', STR_PAD_LEFT);
+        $uniqueId = str_pad($gender, 3, '0', STR_PAD_LEFT);
 
         $jmbg = $day . $month . $year . $region . $uniqueId;
 

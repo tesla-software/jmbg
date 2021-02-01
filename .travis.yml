@@ -2,23 +2,23 @@ dist: trusty
 language: php
 
 php:
-  - 7.1
-  - 7.2
-  - 7.3
+    - 7.3
+    - 7.4
+    - 8.0
 
 sudo: false
 
 cache:
-  directories:
-    - $HOME/.composer/cache
+    directories:
+        - $HOME/.composer/cache
 
 matrix:
-  include:
-    - php: 7.1
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
+    include:
+        -   php: 7.3
+            env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
 
 before_script:
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+    - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
 
 script:
-  - vendor/bin/phpunit
+    - vendor/bin/phpunit

@@ -11,7 +11,7 @@ Validate, generate and extract data from JMBG (Unique Master Citizen Number).
 Via Composer
 
 ``` bash
-$ composer require tesla-software/jmbg
+composer require tesla-software/jmbg
 ```
 
 ## Usage

@@ -53,5 +53,5 @@ $ composer test
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/tesla-software/jmbg/master.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/tesla-software/jmbg
-[link-travis]: https://travis-ci.org/tesla-software/jmbg
+[link-packagist]: https://packagist.com/packages/tesla-software/jmbg
+[link-travis]: https://travis-ci.com/tesla-software/jmbg

@@ -4,15 +4,12 @@ language: php
 php:
     - 7.3
     - 7.4
-    - 8.0
-
-sudo: false
 
 cache:
     directories:
         - $HOME/.composer/cache
 
-matrix:
+jobs:
     include:
         -   php: 7.3
             env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'

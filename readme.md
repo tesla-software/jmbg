@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
+![Build Status][ico-actions]
 
 Validate, generate and extract data from JMBG (Unique Master Citizen Number).
 
@@ -51,7 +51,6 @@ $ composer test
 
 [ico-version]: https://img.shields.io/packagist/v/tesla-software/jmbg.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/tesla-software/jmbg/master.svg?style=flat-square
+[ico-actions]: https://img.shields.io/github/workflow/status/tesla-software/jmbg/Testing%20Package?style=flat-square
 
 [link-packagist]: https://packagist.com/packages/tesla-software/jmbg
-[link-travis]: https://travis-ci.com/tesla-software/jmbg

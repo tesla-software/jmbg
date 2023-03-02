@@ -41,7 +41,7 @@
     "scripts": {
         "test": "phpunit",
         "stan": "phpstan analyse",
-        "check-style": "phpcs src",
-        "fix-style": "phpcbf src"
+        "check-style": "phpcs --standard=PSR12 src",
+        "fix-style": "phpcbf --standard=PSR12 src"
     }
 }

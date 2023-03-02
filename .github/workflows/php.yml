@@ -26,3 +26,7 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Test with phpunit
         run: vendor/bin/phpunit --no-coverage
+      - name: Checkstyle
+        run: vendor/bin/phpcs --standard=PSR12 src
+      - name: Static checks
+        run: vendor/bin/phpstan analyse

@@ -49,8 +49,8 @@ $gen->fake(25, 9, 992, '57', '321');
 $ composer test
 ```
 
-[ico-version]: https://img.shields.io/packagist/v/tesla-software/jmbg.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-actions]: https://img.shields.io/github/workflow/status/tesla-software/jmbg/Testing%20Package?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/tesla-software/jmbg
+[ico-license]: https://img.shields.io/github/license/tesla-software/jmbg
+[ico-actions]: https://img.shields.io/github/actions/workflow/status/tesla-software/jmbg/php.yml
 
-[link-packagist]: https://packagist.com/packages/tesla-software/jmbg
+[link-packagist]: https://packagist.org/packages/tesla-software/jmbg

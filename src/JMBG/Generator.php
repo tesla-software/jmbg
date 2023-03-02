@@ -20,8 +20,7 @@ class Generator
         ?string $year = null,
         ?string $region = null,
         ?string $gender = null
-    ): string
-    {
+    ): string {
         $day = $day ?? '0';
         $month = $month ?? (string) rand(1, 12);
         $year = $year ?? substr((string) rand(1900, (int) date('Y')), 1);
@@ -65,7 +64,7 @@ class Generator
      */
     private function calculateChecksum(string $value): int
     {
-        $pos = (new JMBG)->split($value);
+        $pos = (new JMBG())->split($value);
 
         $k = (7 * ($pos['A'] + $pos['G']))
             + (6 * ($pos['B'] + $pos['H']))

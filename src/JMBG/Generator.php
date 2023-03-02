@@ -7,21 +7,26 @@ class Generator
     /**
      * Generate valid fake JMBG, optionally override default values
      *
-     * @param int|null $day
-     * @param int|null $month
+     * @param string|null $day
+     * @param string|null $month
      * @param string|null $year
      * @param string|null $region
      * @param string $gender
      * @return string
      */
     public function fake(
-        ?int $day = 0,
-        ?int $month = null,
+        ?string $day = '0',
+        ?string $month = null,
         ?string $year = null,
         ?string $region = null,
         ?string $gender = null
     ): string
     {
+        $day = $day ?? '0';
+        $month = $month ?? (string) rand(1, 12);
+        $year = $year ?? substr((string) rand(1900, (int) date('Y')), 1);
+        $region = $region ?? (string) rand(0, 96);
+
         $genders = [
             'f' => [
                 'from' => 500,
@@ -36,13 +41,13 @@ class Generator
         if (is_null($gender)) {
             $genderKeys = array_keys($genders);
             $gender = $genderKeys[array_rand($genderKeys)];
-            $gender = rand($genders[$gender]['from'], $genders[$gender]['to']);
+            $gender = (string) rand($genders[$gender]['from'], $genders[$gender]['to']);
         }
 
         $day = str_pad($day, 2, '0', STR_PAD_LEFT);
-        $month = str_pad($month ?? rand(1, 12), 2, '0', STR_PAD_LEFT);
-        $year = str_pad($year ?? substr(rand(1900, date('Y')), 1), 3, '0', STR_PAD_LEFT);
-        $region = str_pad($region ?? rand(0, 96), 2, '0', STR_PAD_LEFT);
+        $month = str_pad($month, 2, '0', STR_PAD_LEFT);
+        $year = str_pad($year, 3, '0', STR_PAD_LEFT);
+        $region = str_pad($region, 2, '0', STR_PAD_LEFT);
         $uniqueId = str_pad($gender, 3, '0', STR_PAD_LEFT);
 
         $jmbg = $day . $month . $year . $region . $uniqueId;

@@ -3,3 +3,5 @@ composer.lock
 vendor
 phpcs.xml
 .idea
+.phpunit.result.cache
+.phpunit.cache

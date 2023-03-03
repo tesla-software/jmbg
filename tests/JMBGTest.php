@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 class JMBGTest extends TestCase
 {
-    public function testIsValid()
+    public function testIsValid(): void
     {
         $this->assertFalse((new JMBG('0005983225175'))->isValid());
         $this->assertFalse((new JMBG('0000000000001'))->isValid());
@@ -16,18 +16,18 @@ class JMBGTest extends TestCase
         $this->assertTrue((new JMBG('0000000000000'))->isValid());
     }
 
-    public function testStaticCall()
+    public function testStaticCall(): void
     {
         $this->assertTrue(JMBG::for('2509992391801')->isValid());
     }
 
-    public function testGetGender()
+    public function testGetGender(): void
     {
         $this->assertEquals('m', (new JMBG('0101006500006'))->getGender());
         $this->assertEquals('f', (new JMBG('0101006505016'))->getGender());
     }
 
-    public function testGetBirthday()
+    public function testGetBirthday(): void
     {
         $birthday = (new JMBG('0101006500006'))->getBirthday();
 
@@ -35,7 +35,7 @@ class JMBGTest extends TestCase
         $this->assertEquals('2006-01-01', $birthday->format('Y-m-d'));
     }
 
-    public function testSplit()
+    public function testSplit(): void
     {
         $chars = (new JMBG())->split('0123456789123');
 
@@ -54,5 +54,10 @@ class JMBGTest extends TestCase
             'L' => '2',
             'M' => '3',
         ], $chars);
+    }
+
+    public function testNull(): void
+    {
+        $this->assertFalse((new JMBG(null))->isValid());
     }
 }

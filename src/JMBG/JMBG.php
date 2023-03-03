@@ -4,7 +4,7 @@ namespace Tesla\JMBG;
 
 use DateTime;
 
-class JMBG
+final class JMBG
 {
     /**
      * @var string|null
@@ -109,10 +109,14 @@ class JMBG
      * M - Checksum
      *
      * @param  string $jmbg
-     * @return array
+     * @return array<mixed>
      */
-    public function split(string $jmbg): array
+    public function split(?string $jmbg): array
     {
+        if (is_null($jmbg)) {
+            return [];
+        }
+
         $pos = str_split($jmbg);
 
         $split = [
